@@ -75,8 +75,6 @@ Runs [`playwright/tests/web/task3.spec.ts`](playwright/tests/web/task3.spec.ts) 
 
 ```bash
 npm run wdio:task4:report -w wdio-mobile
-# or from root:
-npm run test:mobile:task4:report
 ```
 
 Same as above, but only [`wdio-mobile/tests/task4.spec.ts`](wdio-mobile/tests/task4.spec.ts).
