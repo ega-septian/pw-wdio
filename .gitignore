@@ -1,0 +1,30 @@
+node_modules/
+.DS_Store
+*.log
+
+# Env (keep .env.example tracked)
+.env
+.env.local
+.env.*.local
+
+# Playwright
+playwright/test-results/
+playwright/playwright-report/
+playwright/blob-report/
+
+# WebdriverIO / Appium / Allure
+wdio-mobile/allure-results/
+wdio-mobile/allure-report/
+wdio-mobile/screenshots/
+wdio-mobile/logs/
+wdio-mobile/app/*.apk
+
+# Build / cache / coverage
+*.tsbuildinfo
+dist/
+build/
+coverage/
+**/.cache/
+
+# IDE (optional)
+.idea/

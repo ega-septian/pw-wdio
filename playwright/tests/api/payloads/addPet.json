@@ -1,0 +1,17 @@
+{
+  "category": {
+    "id": 1,
+    "name": "Cats"
+  },
+  "name": "Whiskas",
+  "photoUrls": [
+    "https://upload.wikimedia.org/wikipedia/commons/7/74/A-Cat.jpg"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "Anggora Lokal"
+    }
+  ],
+  "status": "available"
+}

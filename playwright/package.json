@@ -1,0 +1,18 @@
+{
+  "name": "playwright",
+  "private": true,
+  "scripts": {
+    "test": "playwright test tests/web",
+    "test:api": "playwright test tests/api",
+    "test:api:task2": "playwright test tests/api/task2.spec.ts",
+    "test:api:task2:report": "playwright test tests/api/task2.spec.ts && playwright show-report",
+    "test:web:task3": "playwright test tests/web/task3.spec.ts",
+    "test:web:task3:report": "playwright test tests/web/task3.spec.ts; playwright show-report",
+    "test:all": "playwright test",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "dotenv": "^16.4.5"
+  }
+}

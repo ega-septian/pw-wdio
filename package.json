@@ -1,0 +1,21 @@
+{
+  "name": "pw-wdio",
+  "private": true,
+  "description": "Monorepo: Playwright (web + API) + WebdriverIO (mobile)",
+  "workspaces": [
+    "playwright",
+    "wdio-mobile"
+  ],
+  "scripts": {
+    "test:web": "npm run test -w playwright",
+    "test:web:task3": "npm run test:web:task3 -w playwright",
+    "test:web:task3:report": "npm run test:web:task3:report -w playwright",
+    "test:api": "npm run test:api -w playwright",
+    "test:mobile": "npm run wdio -w wdio-mobile",
+    "test:mobile:task4:report": "npm run wdio:task4:report -w wdio-mobile",
+    "install:all": "npm install"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
