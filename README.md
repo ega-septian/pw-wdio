@@ -19,7 +19,7 @@ Monorepo for **Playwright** (web + API) and **WebdriverIO** (Android mobile via 
 ```
 pw-wdio/
 ├── package.json              # npm workspaces (root)
-├── .env                      # Create from .env.example (root)
+├── .env                      # Committed with repo (root)
 ├── playwright/
 │   ├── playwright.config.ts
 │   └── tests/
@@ -49,18 +49,7 @@ pw-wdio/
    cd playwright && npx playwright install && cd ..
    ```
 
-3. **Environment variables**
-
-   Copy **`.env.example`** to **`.env`** at the **repository root** (same folder as root `package.json`).
-
-   | Variable | Purpose |
-   |----------|---------|
-   | `BASE_URL` | Petstore API (e.g. `https://petstore.swagger.io/v2`). Required for API tests. |
-   | `WEB_BASE_URL` | *(Optional)* Base URL for web tests (`page.goto('/')`). Defaults to the automation practice site if unset. |
-
-   Playwright loads `.env` from the **monorepo root** so API tests work when you run commands with `-w playwright`.
-
-4. **Mobile (WDIO)**
+3. **Mobile (WDIO)**
 
    Edit [`wdio-mobile/wdio.conf.ts`](wdio-mobile/wdio.conf.ts): `appPackage`, `appActivity`, optional APK path, and device/UDID as needed.
 
@@ -117,7 +106,7 @@ Same as above, but only [`wdio-mobile/tests/task4.spec.ts`](wdio-mobile/tests/ta
 
 ## Troubleshooting
 
-- **API tests fail from terminal but pass in the IDE** — Ensure **`.env`** exists at **repo root** with a valid `BASE_URL`.
+- **API tests fail** — Check **`BASE_URL`** in **`.env`** at repo root (Playwright loads it from there).
 - **Allure report shows empty / “Loading…”** — Open the report with **`npx allure open allure-report`** (HTTP), not by double-clicking `index.html`.
 
 ---
