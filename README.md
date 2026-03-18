@@ -49,10 +49,6 @@ pw-wdio/
    cd playwright && npx playwright install && cd ..
    ```
 
-3. **Mobile (WDIO)**
-
-   Edit [`wdio-mobile/wdio.conf.ts`](wdio-mobile/wdio.conf.ts): `appPackage`, `appActivity`, optional APK path, and device/UDID as needed.
-
 ---
 
 ## Running tests
@@ -74,14 +70,6 @@ npm run test:web:task3:report -w playwright
 ```
 
 Runs [`playwright/tests/web/task3.spec.ts`](playwright/tests/web/task3.spec.ts) and opens the report (report opens even if a test fails).
-
-### WebdriverIO — all mobile specs + Allure report
-
-```bash
-npm run wdio:report -w wdio-mobile
-```
-
-Runs every file matching `wdio-mobile/tests/**/*.spec.ts`, generates **Allure** HTML, and opens it via a local server (`allure open` — do not open `index.html` with `file://` or charts may stay on “Loading…”).
 
 ### WebdriverIO — task4 only + Allure report
 
