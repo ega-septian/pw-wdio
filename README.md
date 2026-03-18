@@ -10,7 +10,7 @@ Monorepo for **Playwright** (web + API) and **WebdriverIO** (Android mobile via 
 |-------------|--------|
 | **Node.js** | v18 or newer ([`engines`](package.json)) |
 | **Playwright browsers** | Install after `npm install` (see [Setup](#setup)) |
-| **Mobile tests** | Android device or emulator, **ADB** (`adb devices`), **Appium 2** with **UiAutomator2** driver (`npx appium driver install uiautomator2` if needed). JDK is usually required for Appium. |
+| **Mobile tests** | Android device or emulator, **ADB** (`adb devices`), **UiAutomator2** driver under a stable **`APPIUM_HOME`** (see [Appium setup for mobile](#appium-setup-for-mobile)). JDK is usually required for Appium. |
 
 ---
 
@@ -47,6 +47,30 @@ pw-wdio/
 
    ```bash
    cd playwright && npx playwright install && cd ..
+   ```
+
+3. **Appium setup for mobile**
+
+   WDIO starts Appium from this repo’s `node_modules`. Drivers must be installed into the same **Appium home** that the server uses. Setting **`APPIUM_HOME`** to `~/.appium` avoids “driver not found” when the default home differs per folder.
+
+   From the repo root (`pw-wdio/`):
+
+   ```bash
+   export APPIUM_HOME="$HOME/.appium"
+   mkdir -p "$APPIUM_HOME"
+   npx appium driver install uiautomator2
+   ```
+
+   Verify:
+
+   ```bash
+   npx appium driver list --installed
+   ```
+
+   You should see **uiautomator2**. For everyday runs, either export `APPIUM_HOME` in your shell profile (e.g. `~/.zshrc`) or prefix WDIO commands:
+
+   ```bash
+   APPIUM_HOME="$HOME/.appium" npm run test:mobile -w wdio-mobile
    ```
 
 ---
@@ -94,6 +118,14 @@ Same as above, but only [`wdio-mobile/tests/task4.spec.ts`](wdio-mobile/tests/ta
 
 - **API tests fail** — Check **`BASE_URL`** in **`.env`** at repo root (Playwright loads it from there).
 - **Allure report shows empty / “Loading…”** — Open the report with **`npx allure open allure-report`** (HTTP), not by double-clicking `index.html`.
+- **`Could not find a driver for automationName 'UiAutomator2'`** — Install the driver into a fixed home and reuse it when running tests (see [Appium setup for mobile](#appium-setup-for-mobile)). Example one-off run from `wdio-mobile/`:
+
+  ```bash
+  export APPIUM_HOME="$HOME/.appium"
+  npx wdio run wdio.conf.ts --spec=./tests/task4.spec.ts
+  ```
+
+- **Port 4723 already in use** — Stop the other Appium/process, or rely on WDIO’s Appium service (it picks a free port if 4723 is busy). Don’t start a second Appium on the same port.
 
 ---
 
