@@ -2,11 +2,6 @@ node_modules/
 .DS_Store
 *.log
 
-# Env (keep .env.example tracked)
-.env
-.env.local
-.env.*.local
-
 # Playwright
 playwright/test-results/
 playwright/playwright-report/
